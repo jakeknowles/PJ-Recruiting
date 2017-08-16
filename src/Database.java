@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.FlowLayout;
@@ -8,8 +9,6 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.JComboBox;
-import javax.swing.JLabel;
 
 /**
  * @author Patty
@@ -18,137 +17,100 @@ import javax.swing.JLabel;
  */
 
 
-public class Database {
-    public static void main(String[] args) {
-    	
-        Vector columnNames = new Vector();
-        Vector data = new Vector();
-        
-        
-//      try {
-//    	String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=AdventureWorks2012;integratedSecurity=true";
-//  	  	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//  	  	Connection conn = DriverManager.getConnection(url);
-//        String sql = "select FirstName, LastName from Person.person";
-//        Statement statement = conn.createStatement();
-//        ResultSet resultSet = statement.executeQuery(sql);
-//        ResultSetMetaData metaData = resultSet.getMetaData();
-//        int columns = metaData.getColumnCount();
-//        
-//        for (int i = 1; i <= columns; i++) {
-//            columnNames.addElement(metaData.getColumnName(i));
-//        }
-//        
-//        
-//        while (resultSet.next()) {
-//        	
-//            Vector row = new Vector(columns);
-//            for (int i = 1; i <= columns; i++) {
-//                row.addElement(resultSet.getObject(i));
-//            }
-//            data.addElement(row);
-//        }
-//        
-//        resultSet.close();
-//        statement.close();
-//        
-//    } catch (Exception e) {
-//        System.out.println(e);
-//    }
+public class Database extends JFrame {
+	
+    /**  A generated serial version UID for object Serialization. */
+    private static final long serialVersionUID = 1L;
     
-//    JTable table = new JTable(data, columnNames);
-//    table.setSize(500, 500);
-//    TableColumn column;
-//    
-//    for (int i = 0; i < table.getColumnCount(); i++) {
-//        column = table.getColumnModel().getColumn(i);
-//        column.setMaxWidth(250);
-//    }
-//    
-//    JScrollPane scrollPane = new JScrollPane(table); 
-//    panel.add(scrollPane);  
-        
-        initialize();
-
-        }
+    /** My panel. */
+    private static JPanel myPanel;
     
-    public static void initialize() {
+    /** The north panel. */
+    private static JPanel myNorthPanel;
+    
+    /**  The south panel. */
+    private static JPanel mySouthPanel;
+    
+    /**  The middle panel. */
+    private static JPanel myCentralPanel;
+    
+    /** Colleges that appear in drop down combo box */
+	private static final String[] colleges = { "Oregon State", "USC", "Stanford", "Arizona", "California", 
+    		"Washington", "Utah", "UCLA", "Colorado", "WSU", "Arizona State", "Oregon" };
+	
+	 /** Positions that appear in drop down combo box */
+	private static final String[] positions = { "Offense", "Defense", "Special Teams" };
+	
+	 /** Scholarships that appear in drop down combo box */
+	private static final String[] scholarships = { "100", "75", "50", "25", "0" };
+	
+	 /** High school states that appear in drop down combo box */
+	private static final String[] highschoolState = { "AK", "AL", "AR", "AZ","CA", "CO","CT","DE", "FL", 
+			"GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", 
+			"MO", "MS", "MT", "NE", "NH", "NJ", "NM", "NV", "NY", "NC", "ND", "OH", "OK", "OR", "PA","RI",
+			"SC", "SD", "TN", "TX", "UT", "VT", "VA","WA", "WI", "WV", "WY" };
+	
+	 /** High school classes that appear in drop down combo box */
+	private static final String[] highschoolClass = { "Senior ", "Junior", "Sophomore", "Freshman"};
+	
+    /** JComboBox with colleges */
+    private static final JComboBox<String> collegeBox = new JComboBox<String>(colleges);
+    
+    /** JComboBox with positions */
+    private static final JComboBox<String> positionBox = new JComboBox<String>(positions);
+    
+    /** JComboBox with scholarships */
+    private static final JComboBox<String> scholarshipBox = new JComboBox<String>(scholarships);
+    
+    /** JComboBox with high school states */
+    private static final JComboBox<String> highschoolStateBox = new JComboBox<String>(highschoolState);
+    
+    /** JComboBox with high school classes */
+    private static final JComboBox<String> highschoolClassBox = new JComboBox<String>(highschoolClass);
+    
+    /** Label. */
+    private static JLabel label = new JLabel();
+    
+    /** JButton for submitting search */
+    private static final JButton okButton = new JButton("OK");
+	
+	
+    /** Constructor */
+    public Database() {
+        super("PJ Recruiting");
+    }
+    
+    
+    private void createUI() {
     	
-    	String[] schools = { "Oregon State", "USC", "Stanford", "Arizona", "California", 
-        		"Washington", "Utah", "UCLA", "Colorado", "WSU", "Arizona State", "Oregon" };
+        myPanel = new JPanel(new BorderLayout());
+        myNorthPanel = new JPanel(new FlowLayout());
+        mySouthPanel = new JPanel(new FlowLayout());
+        myCentralPanel = new JPanel(new FlowLayout());
+        
+        
+        myNorthPanel.add(collegeBox);
+        myNorthPanel.add(positionBox);
+        myNorthPanel.add(scholarshipBox);
+        myNorthPanel.add(highschoolStateBox);
+        myNorthPanel.add(highschoolClassBox);
+        myCentralPanel.add(label);
+        mySouthPanel.add(okButton);
+        
+        myPanel.add(myNorthPanel, BorderLayout.NORTH);
+        myPanel.add(myCentralPanel, BorderLayout.CENTER);
+        myPanel.add(mySouthPanel, BorderLayout.SOUTH);
+        
+        add(myPanel);
+        pack();
     	
-    	String[] positions = { "Offense", "Defense", "Special Teams" };
-    	
-    	String[] scholarships = { "100", "75", "50", "25", "0" };
-    	
-    	String[] highschoolState = { "AK", "AL", "AR", "AZ","CA", "CO","CT","DE", "FL", 
-    			"GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", 
-    			"MO", "MS", "MT", "NE", "NH", "NJ", "NM", "NV", "NY", "NC", "ND", "OH", "OK", "OR", "PA","RI",
-    			"SC", "SD", "TN", "TX", "UT", "VT", "VA","WA", "WI", "WV", "WY" };
-    	
-    	String[] highschoolClass = { "Senior ", "Junior", "Sophomore", "Freshman"};
-        
-    	
-    	
-        JFrame frame = new JFrame("PJ Recruiting");
-        frame.setSize(1000, 600); //setting frame size
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Ends when exits
-        frame.setLocation(250, 00);
-        GridLayout grid = new GridLayout(0, 5);
-        frame.setLayout(grid); // O rows, 5 Columns
-
-        JPanel panel = new JPanel();
-        Color myColor = Color.decode("#CAC2FF"); // Light Purple
-        panel.setBackground(myColor);
-
-        frame.add(panel);         //adding panel to the frame
-        
-        JLabel collegeLabel = new JLabel("College", JLabel.CENTER);
-        collegeLabel.setVisible(true);
-        
-        JLabel positionLabel = new JLabel("Position");
-        positionLabel.setVisible(true);
-        
-        JLabel scholarshipLabel = new JLabel("Scholarship");
-        scholarshipLabel.setVisible(true);
-        
-        JLabel stateLabel = new JLabel("Highschool State");
-        stateLabel.setVisible(true);
-        
-        JLabel classLabel = new JLabel("Highschool Class");
-        classLabel.setVisible(true);
-        
-        
-        panel.add(collegeLabel);
-       
-        
-		JComboBox<String> collegeBox = new JComboBox<String>(schools);
-		collegeBox.setVisible(true);
-        panel.add(collegeBox);
-        
-		JComboBox<String> positionBox = new JComboBox<String>(positions);
-		positionBox.setVisible(true);
-        panel.add(positionBox);
-        
-        JComboBox<String> scholarshipBox = new JComboBox<String>(scholarships);
-        scholarshipBox.setVisible(true);
-        panel.add(scholarshipBox);
-        
-        JComboBox<String> highschoolStateBox = new JComboBox<String>(highschoolState);
-        highschoolStateBox.setVisible(true);
-        panel.add(highschoolStateBox);
-        
-        JComboBox<String> highschoolClassBox = new JComboBox<String>(highschoolClass);
-        highschoolClassBox.setVisible(true);
-        panel.add(highschoolClassBox);
-        
-        
-        JButton button = new JButton("OK");
-        panel.add(button);
-        
-        frame.setVisible(true);  //setting visibility true
-        
-
+    }
+    
+    /** Starts the GUI. */
+    public void start() {
+        createUI(); 
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
     }
    
 }
