@@ -1,14 +1,10 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.sql.*;
-import java.util.*;
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 /**
  * @author Patty
@@ -19,92 +15,146 @@ import javax.swing.table.TableColumn;
 
 public class Database extends JFrame {
 	
-    /**  A generated serial version UID for object Serialization. */
+    /*  A generated serial version UID for object Serialization. */
     private static final long serialVersionUID = 1L;
     
-    /** My panel. */
+    /* My panel. */
     private static JPanel myPanel;
     
-    /** The north panel. */
+    /* The north panel. */
     private static JPanel myNorthPanel;
     
-    /**  The south panel. */
+    /*  The south panel. */
     private static JPanel mySouthPanel;
     
-    /**  The middle panel. */
+    /*  The middle panel. */
     private static JPanel myCentralPanel;
     
-    /** Colleges that appear in drop down combo box */
-	private static final String[] colleges = { "Oregon State", "USC", "Stanford", "Arizona", "California", 
-    		"Washington", "Utah", "UCLA", "Colorado", "WSU", "Arizona State", "Oregon" };
+    /* Colleges that appear in drop down combo box */
+	private static final String[] colleges = { "Arizona", "Arizona State", "California",  "Colorado", 
+			"Oregon", "Oregon State", "Stanford", "UCLA", "USC", "Utah", "Washington", "Washington State" };
 	
-	 /** Positions that appear in drop down combo box */
+	/* Positions that appear in drop down combo box */
 	private static final String[] positions = { "Offense", "Defense", "Special Teams" };
 	
-	 /** Scholarships that appear in drop down combo box */
-	private static final String[] scholarships = { "100", "75", "50", "25", "0" };
+	/* Scholarships that appear in drop down combo box */
+	private static final String[] scholarships = { "100%", "75%", "50%", "25%", "0%" };
 	
-	 /** High school states that appear in drop down combo box */
+	/* High school states that appear in drop down combo box */
 	private static final String[] highschoolState = { "AK", "AL", "AR", "AZ","CA", "CO","CT","DE", "FL", 
 			"GA", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", 
 			"MO", "MS", "MT", "NE", "NH", "NJ", "NM", "NV", "NY", "NC", "ND", "OH", "OK", "OR", "PA","RI",
 			"SC", "SD", "TN", "TX", "UT", "VT", "VA","WA", "WI", "WV", "WY" };
 	
-	 /** High school classes that appear in drop down combo box */
+	/* High school classes that appear in drop down combo box */
 	private static final String[] highschoolClass = { "Senior ", "Junior", "Sophomore", "Freshman"};
 	
-    /** JComboBox with colleges */
+    /* JComboBox with colleges */
     private static final JComboBox<String> collegeBox = new JComboBox<String>(colleges);
     
-    /** JComboBox with positions */
+    /* JComboBox with positions */
     private static final JComboBox<String> positionBox = new JComboBox<String>(positions);
     
-    /** JComboBox with scholarships */
+    /* JComboBox with scholarships */
     private static final JComboBox<String> scholarshipBox = new JComboBox<String>(scholarships);
     
-    /** JComboBox with high school states */
+    /* JComboBox with high school states */
     private static final JComboBox<String> highschoolStateBox = new JComboBox<String>(highschoolState);
     
-    /** JComboBox with high school classes */
+    /* JComboBox with high school classes */
     private static final JComboBox<String> highschoolClassBox = new JComboBox<String>(highschoolClass);
     
-    /** Label. */
+    /* Label. */
     private static JLabel label = new JLabel();
     
-    /** JButton for submitting search */
-    private static final JButton okButton = new JButton("OK");
+    /* College Label. */
+    private static JLabel collegeLabel = new JLabel("College:");
+   
+    /* Positions Label. */
+    private static JLabel positionLabel = new JLabel("Position:");
+    
+    /* Scholarship Label. */
+    private static JLabel scholarshipLabel = new JLabel("Scholarship:");
+    
+    /* High School State Label. */
+    private static JLabel highSchoolStateLabel = new JLabel("High School State:");
+    
+    /* High School Class Label. */
+    private static JLabel highSchoolClassLabel = new JLabel("High School Class:");
+    
+    /* JButton for submitting search */
+    private static final JButton goButton = new JButton("SEARCH");
+    
+    /* JButton for submitting search */
+    private static final JEditorPane textView = new JEditorPane();
+    
+    /* Border for JEditorPane */
+    private static final Border textBorder = new LineBorder(Color.BLACK, 7);
+    
 	
-	
-    /** Constructor */
+    /* Constructor */
     public Database() {
         super("PJ Recruiting");
     }
+
     
-    
+    /* Creates UI */
     private void createUI() {
     	
-        myPanel = new JPanel(new BorderLayout());
-        myNorthPanel = new JPanel(new FlowLayout());
-        mySouthPanel = new JPanel(new FlowLayout());
-        myCentralPanel = new JPanel(new FlowLayout());
+        myPanel = new JPanel(new BorderLayout()); // Main Panel
+        myNorthPanel = new JPanel(new FlowLayout()); // Panel with drop downs
+        mySouthPanel = new JPanel(new FlowLayout()); // Panel with text area
+        myCentralPanel = new JPanel(new FlowLayout()); // Panel with button
         
-        
+       
+        myNorthPanel.add(collegeLabel);
         myNorthPanel.add(collegeBox);
+        
+        myNorthPanel.add(positionLabel);
         myNorthPanel.add(positionBox);
+        
+        myNorthPanel.add(scholarshipLabel);
         myNorthPanel.add(scholarshipBox);
+        
+        myNorthPanel.add(highSchoolStateLabel);
         myNorthPanel.add(highschoolStateBox);
+        
+        myNorthPanel.add(highSchoolClassLabel);
         myNorthPanel.add(highschoolClassBox);
+        
         myCentralPanel.add(label);
-        mySouthPanel.add(okButton);
+        
+        /* Button Stuff */
+        goButton.setToolTipText("Click to search for student");  
+        goButton.setPreferredSize(new Dimension(150, 35));
+        goButton.setBackground(Color.YELLOW);
+        goButton.setOpaque(true); 
+        myCentralPanel.add(goButton);
+        
+        
+        /* Text View Stuff */
+        Color myGrey = Color.decode("#f2efff"); // Light grey
+        textView.setPreferredSize(new Dimension(1000, 200));
+        textView.setBorder(textBorder);
+        textView.setBackground(myGrey);
+        textView.setEnabled(false); // Non-editable
+        mySouthPanel.add(textView);
         
         myPanel.add(myNorthPanel, BorderLayout.NORTH);
         myPanel.add(myCentralPanel, BorderLayout.CENTER);
         myPanel.add(mySouthPanel, BorderLayout.SOUTH);
         
+        
+        Color myPurple = Color.decode("#CAC2FF"); // Light Purple
+        myNorthPanel.setBackground(myPurple);
+        myCentralPanel.setBackground(myPurple);
+        mySouthPanel.setBackground(myPurple);
+        
         add(myPanel);
         pack();
     	
     }
+
     
     /** Starts the GUI. */
     public void start() {
