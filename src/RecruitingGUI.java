@@ -2,9 +2,15 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+
 
 /**
  * @author Jake Knowles
@@ -13,7 +19,7 @@ import javax.swing.border.LineBorder;
  */
 
 
-public class Database extends JFrame {
+public class RecruitingGUI extends JFrame {
 	
     /*  A generated serial version UID for object Serialization. */
     private static final long serialVersionUID = 1L;
@@ -93,7 +99,7 @@ public class Database extends JFrame {
     
 	
     /* Constructor */
-    public Database() {
+    public RecruitingGUI() {
         super("PJ Recruiting");
         this.setResizable(false);
     }
@@ -154,9 +160,19 @@ public class Database extends JFrame {
         
         add(myPanel);
         pack();
+        
+        goSearch();
     	
     }
-
+    
+    /* Once 'SEARCH; is pressed */
+    private void goSearch() {
+        goButton.addActionListener(new ActionListener() { 
+            public void actionPerformed(final ActionEvent theEvent) {
+            	// do something
+            }
+        });
+    }
     
     /** Starts the GUI. */
     public void start() {

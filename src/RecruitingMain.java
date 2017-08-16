@@ -78,7 +78,7 @@ public class RecruitingMain {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Database().start();
+                new RecruitingGUI().start();
             }
         });
     }
