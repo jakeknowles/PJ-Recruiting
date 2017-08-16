@@ -7,8 +7,8 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
 /**
- * @author Patty
- * @author jake
+ * @author Jake Knowles
+ * @author Patrick Stevens
  * @version 08/10/2017
  */
 

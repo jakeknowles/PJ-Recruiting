@@ -10,6 +10,7 @@ import javax.swing.table.TableColumn;
  * Project for Database TCSS 445
  * @author Jake Knowles
  * @author Patrick Stevens
+ * @version 08/16/2017
  *
  */
 public class RecruitingMain {
