@@ -95,6 +95,7 @@ public class Database extends JFrame {
     /* Constructor */
     public Database() {
         super("PJ Recruiting");
+        this.setResizable(false);
     }
 
     
@@ -133,8 +134,8 @@ public class Database extends JFrame {
         
         
         /* Text View Stuff */
-        Color myGrey = Color.decode("#f2efff"); // Light grey
-        textView.setPreferredSize(new Dimension(1000, 200));
+        Color myGrey = Color.decode("#fafafa"); // Light grey
+        textView.setPreferredSize(new Dimension(1000, 250));
         textView.setBorder(textBorder);
         textView.setBackground(myGrey);
         textView.setEnabled(false); // Non-editable
@@ -143,6 +144,7 @@ public class Database extends JFrame {
         myPanel.add(myNorthPanel, BorderLayout.NORTH);
         myPanel.add(myCentralPanel, BorderLayout.CENTER);
         myPanel.add(mySouthPanel, BorderLayout.SOUTH);
+       
         
         
         Color myPurple = Color.decode("#CAC2FF"); // Light Purple
