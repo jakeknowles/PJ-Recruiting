@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Vector;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -42,7 +44,7 @@ public class RecruitingGUI extends JFrame {
 	private static final String[] positions = { "Offense", "Defense", "Special Teams" };
 	
 	/* Scholarships that appear in drop down combo box */
-	private static final String[] scholarships = { "100", "75", "50", "25", "0" };
+	private static final Integer[] scholarships = { 100, 75, 50, 25, 0 };
 	
 	/* High school states that appear in drop down combo box */
 	private static final String[] highschoolState = { "AK", "AL", "AR", "AZ","CA", "CO","CT","DE", "FL", 
@@ -60,7 +62,7 @@ public class RecruitingGUI extends JFrame {
     private static final JComboBox<String> positionBox = new JComboBox<String>(positions);
     
     /* JComboBox with scholarships */
-    private static final JComboBox<String> scholarshipBox = new JComboBox<String>(scholarships);
+    private static final JComboBox<Integer> scholarshipBox = new JComboBox<>(scholarships);
     
     /* JComboBox with high school states */
     private static final JComboBox<String> highschoolStateBox = new JComboBox<String>(highschoolState);
@@ -102,7 +104,7 @@ public class RecruitingGUI extends JFrame {
     public static String positionSelection = "Offense";
     
     /* Scholarship Variable for storing selection */
-    public static String scholarshipSelection = "100";
+    public static int scholarshipSelection = 100;
     
     /* State Variable for storing selection */
     public static String stateSelection = "AK";
@@ -188,6 +190,10 @@ public class RecruitingGUI extends JFrame {
     private void goSearch() {
         goButton.addActionListener(new ActionListener() { 
             public void actionPerformed(final ActionEvent theEvent) {
+            	
+            	ArrayList test = new DBConnect().Connecting(collegeSelection, positionSelection, scholarshipSelection, stateSelection, classSelection);
+            	System.out.println(test.get(0) + " " + test.get(1));
+            	
             	displayOnJEditorPane();
 
         }
@@ -238,7 +244,7 @@ public class RecruitingGUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
         	
-        	scholarshipSelection = (String) scholarshipBox.getSelectedItem();
+        	scholarshipSelection = (int) scholarshipBox.getSelectedItem();
 	
         }
     	});
