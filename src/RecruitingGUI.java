@@ -114,7 +114,6 @@ public class RecruitingGUI extends JFrame {
     public RecruitingGUI() {
         super("PJ Recruiting");
         this.setResizable(false);
-        setDefaultLookAndFeelDecorated(true);
     }
 
     
@@ -141,7 +140,7 @@ public class RecruitingGUI extends JFrame {
         
         myNorthPanel.add(highSchoolClassLabel);
         myNorthPanel.add(highschoolClassBox);
- 
+        
         
         /* Button Stuff */
         goButton.setToolTipText("Click to search for student");  
