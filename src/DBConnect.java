@@ -1,4 +1,3 @@
-import java.awt.EventQueue;
 import java.util.Vector;
 import java.sql.*;
 import java.util.*;
