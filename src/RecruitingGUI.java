@@ -94,6 +94,21 @@ public class RecruitingGUI extends JFrame {
     
     /* Border for JEditorPane */
     private static final Border textBorder = new LineBorder(Color.BLACK, 7);
+   
+    /* College Variable for storing selection */
+    public static String collegeSelection = "";
+    
+    /* Position Variable for storing selection */
+    public static String positionSelection = "";
+    
+    /* Scholarship Variable for storing selection */
+    public static String scholarshipSelection = "";
+    
+    /* State Variable for storing selection */
+    public static String stateSelection = "";
+    
+    /* Class Variable for storing selection */
+    public static String classSelection = "";
     
 	
     /* Constructor */
@@ -160,6 +175,11 @@ public class RecruitingGUI extends JFrame {
         pack();
         
         goSearch();
+        collegeBoxListener();
+        positionBoxListener();
+        scholarshipBoxListener();
+        stateBoxListener();
+        classBoxListener();
     	
     }
     
@@ -167,10 +187,88 @@ public class RecruitingGUI extends JFrame {
     private void goSearch() {
         goButton.addActionListener(new ActionListener() { 
             public void actionPerformed(final ActionEvent theEvent) {
-            	// do something
-            }
+            	System.out.println("You picked " + collegeSelection + ", " + positionSelection + ", " + scholarshipSelection + ", "
+            			+ stateSelection + ", " + classSelection);
+        }
         });
     }
+    
+    /* College Box Listener */
+    private void collegeBoxListener() {
+    	
+    	collegeBox.addActionListener(new ActionListener() {
+    	
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        	
+        	collegeSelection = (String) collegeBox.getSelectedItem();
+        		System.out.println(collegeSelection);
+	
+        }
+    	});
+    }
+    
+    /* Position Box Listener */
+    private void positionBoxListener() {
+    	
+    	positionBox.addActionListener(new ActionListener() {
+    	
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        	
+        	positionSelection = (String) positionBox.getSelectedItem();
+        	System.out.println(positionSelection);
+	
+        }
+    	});
+    }
+    
+    /* Scholarship Box Listener */
+    private void scholarshipBoxListener() {
+    	
+    	scholarshipBox.addActionListener(new ActionListener() {
+    	
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        	
+        	scholarshipSelection = (String) scholarshipBox.getSelectedItem();
+        	System.out.println(scholarshipSelection);
+	
+        }
+    	});
+    }
+    
+    /* High School State Box Listener */
+    private void stateBoxListener() {
+    	
+    	highschoolStateBox.addActionListener(new ActionListener() {
+    	
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        	
+        	stateSelection = (String) highschoolStateBox.getSelectedItem();
+        	System.out.println(stateSelection);
+	
+        }
+    	});
+    }
+    
+    /* High School Class Box Listener */
+    private void classBoxListener() {
+    	
+    	highschoolClassBox.addActionListener(new ActionListener() {
+    	
+        @Override
+        public void actionPerformed(ActionEvent e) {
+        	
+        	classSelection = (String) highschoolClassBox.getSelectedItem();
+        	System.out.println(classSelection);
+	
+        }
+    	});
+    }
+    
+    
     
     /** Starts the GUI. */
     public void start() {
