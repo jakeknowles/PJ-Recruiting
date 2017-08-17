@@ -1,3 +1,5 @@
+import java.awt.EventQueue;
+
 /**
  * Project for Database TCSS 445
  * @author Jake Knowles
@@ -5,8 +7,10 @@
  * @version 08/16/2017
  *
  */
-import java.awt.EventQueue;
 
+/*
+ * Runs application (GUI)
+ */
 public class PJMain {
 
 	public static void main(String[] args) {

@@ -5,8 +5,6 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Vector;
-
 import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
@@ -91,7 +89,7 @@ public class RecruitingGUI extends JFrame {
     private static final JButton goButton = new JButton("SEARCH");
     
     /* JButton for submitting search */
-    private static final JEditorPane textView = new JEditorPane();
+    private static final JTextArea textView = new JTextArea();
     
     /* Border for JEditorPane */
     private static final Border textBorder = new LineBorder(Color.BLACK, 7);
@@ -157,6 +155,7 @@ public class RecruitingGUI extends JFrame {
         textView.setPreferredSize(new Dimension(1000, 250));
         textView.setBorder(textBorder);
         textView.setBackground(myGrey);
+        textView.setForeground(Color.black);
         textView.setEnabled(false); // Non-editable
 
         
@@ -187,9 +186,11 @@ public class RecruitingGUI extends JFrame {
     /* Once 'SEARCH; is pressed */
     private void goSearch() {
         goButton.addActionListener(new ActionListener() { 
-            public void actionPerformed(final ActionEvent theEvent) {
+            @Override
+			public void actionPerformed(final ActionEvent theEvent) {
             	
-            	ArrayList test = new DBConnect().Connecting(collegeSelection, positionSelection, scholarshipSelection, stateSelection, classSelection);
+            	new DBConnect();
+				ArrayList test = DBConnect.Connecting(collegeSelection, positionSelection, scholarshipSelection, stateSelection, classSelection);
             	System.out.println(test.get(0) + " " + test.get(1));
             	
             	displayOnJEditorPane();
@@ -202,7 +203,9 @@ public class RecruitingGUI extends JFrame {
     private void displayOnJEditorPane() {
         String output = ("You picked: \n" + " - " + collegeSelection + "\n" +  " - " + positionSelection + "\n" + " - " + 
         					scholarshipSelection + "\n" + " - " + stateSelection + "\n" + " - " + classSelection);
+        textView.repaint();
         textView.setText(output);
+        textView.repaint();
         
     }
     

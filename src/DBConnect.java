@@ -1,9 +1,6 @@
 import java.util.Vector;
 import java.sql.*;
 import java.util.*;
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  * Project for Database TCSS 445
@@ -65,7 +62,7 @@ public class DBConnect {
 	    ArrayList testing = new ArrayList();
 	    testing.add(columnNames);
 	    testing.add(data);
-		  return testing;
+		return testing;
 		    	
 		       
 		        
