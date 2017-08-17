@@ -53,7 +53,7 @@ public class DBConnect {
 	            for (int i = 1; i <= columns; i++) {
 	                row.addElement(resultSet.getObject(i));
 	            }
-	            data.addElement(row);
+	            data.addElement(row); 
 	        }
 	        
 	        resultSet.close();
