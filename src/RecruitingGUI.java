@@ -189,23 +189,44 @@ public class RecruitingGUI extends JFrame {
             @Override
 			public void actionPerformed(final ActionEvent theEvent) {
             	
+
             	new DBConnect();
 				ArrayList test = DBConnect.Connecting(collegeSelection, positionSelection, scholarshipSelection, stateSelection, classSelection);
             	System.out.println(test.get(0) + " " + test.get(1));
+
+            	ArrayList data = new DBConnect().Connecting(collegeSelection, positionSelection, scholarshipSelection, stateSelection, classSelection);
+            	//System.out.println(data.get(0) + " " + data.get(1));
             	
-            	displayOnJEditorPane();
+            	displayOnJEditorPane(data);
 
         }
         });
     }
     
-    /* Displays output to text area */
-    private void displayOnJEditorPane() {
-        String output = ("You picked: \n" + " - " + collegeSelection + "\n" +  " - " + positionSelection + "\n" + " - " + 
-        					scholarshipSelection + "\n" + " - " + stateSelection + "\n" + " - " + classSelection);
-        textView.repaint();
-        textView.setText(output);
-        textView.repaint();
+
+    private void displayOnJEditorPane(ArrayList data) {
+    	
+    	System.out.println(data.get(0).toString());
+    	//System.out.println(data.size());
+    	
+    	
+    	StringBuilder output = new StringBuilder();
+
+    	for( int i = 0; i < data.size(); i++ ) {
+    		if(i == 0 ) {
+    			output.append(data.get(i).toString());
+    			output.append("\n");
+    		} else {
+    			output.append(data.get(i).toString());
+    			output.append("\n");
+    		}
+    		
+    		
+    	}
+    	
+
+        textView.setText(output.toString());
+        textView.setForeground(Color.black);
         
     }
     
