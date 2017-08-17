@@ -16,7 +16,9 @@ import javax.swing.border.LineBorder;
  * @version 08/10/2017
  */
 
-
+/*
+ * RecruitingGUI is the GUI for our application. This class loads all of the UI.
+ */
 public class RecruitingGUI extends JFrame {
 	
     /*  A generated serial version UID for object Serialization. */
@@ -67,9 +69,6 @@ public class RecruitingGUI extends JFrame {
     
     /* JComboBox with high school classes */
     private static final JComboBox<String> highschoolClassBox = new JComboBox<String>(highschoolClass);
-    
-    /* Label. */
-    private static JLabel label = new JLabel();
     
     /* College Label. */
     private static JLabel collegeLabel = new JLabel("College:");
@@ -141,8 +140,7 @@ public class RecruitingGUI extends JFrame {
         
         myNorthPanel.add(highSchoolClassLabel);
         myNorthPanel.add(highschoolClassBox);
-        
-        myCentralPanel.add(label);
+ 
         
         /* Button Stuff */
         goButton.setToolTipText("Click to search for student");  

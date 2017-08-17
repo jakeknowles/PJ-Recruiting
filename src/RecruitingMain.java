@@ -13,6 +13,10 @@ import javax.swing.table.TableColumn;
  * @version 08/16/2017
  *
  */
+
+/*
+ * Starts our application - deals with load up of database
+ */
 public class RecruitingMain {
 	
     /**
