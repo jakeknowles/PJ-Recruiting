@@ -42,7 +42,7 @@ public class RecruitingGUI extends JFrame {
 	private static final String[] positions = { "Offense", "Defense", "Special Teams" };
 	
 	/* Scholarships that appear in drop down combo box */
-	private static final String[] scholarships = { "100%", "75%", "50%", "25%", "0%" };
+	private static final String[] scholarships = { "100", "75", "50", "25", "0" };
 	
 	/* High school states that appear in drop down combo box */
 	private static final String[] highschoolState = { "AK", "AL", "AR", "AZ","CA", "CO","CT","DE", "FL", 
@@ -96,19 +96,19 @@ public class RecruitingGUI extends JFrame {
     private static final Border textBorder = new LineBorder(Color.BLACK, 7);
    
     /* College Variable for storing selection */
-    public static String collegeSelection = "";
+    public static String collegeSelection = "Arizona";
     
     /* Position Variable for storing selection */
-    public static String positionSelection = "";
+    public static String positionSelection = "Offense";
     
     /* Scholarship Variable for storing selection */
-    public static String scholarshipSelection = "";
+    public static String scholarshipSelection = "100";
     
     /* State Variable for storing selection */
-    public static String stateSelection = "";
+    public static String stateSelection = "AK";
     
     /* Class Variable for storing selection */
-    public static String classSelection = "";
+    public static String classSelection = "Senior";
     
 	
     /* Constructor */
@@ -187,10 +187,20 @@ public class RecruitingGUI extends JFrame {
     private void goSearch() {
         goButton.addActionListener(new ActionListener() { 
             public void actionPerformed(final ActionEvent theEvent) {
-            	System.out.println("You picked " + collegeSelection + ", " + positionSelection + ", " + scholarshipSelection + ", "
-            			+ stateSelection + ", " + classSelection);
+            	displayOnJEditorPane();
+
         }
         });
+    }
+    
+    /* Displays output to text area */
+    private void displayOnJEditorPane() {
+        String output = ("You picked " + collegeSelection + ", " + positionSelection + ", " + scholarshipSelection + ", "
+            			+ stateSelection + ", " + classSelection);
+        
+        textView.setText(output);
+        
+        
     }
     
     /* College Box Listener */
@@ -202,7 +212,6 @@ public class RecruitingGUI extends JFrame {
         public void actionPerformed(ActionEvent e) {
         	
         	collegeSelection = (String) collegeBox.getSelectedItem();
-        		System.out.println(collegeSelection);
 	
         }
     	});
@@ -217,7 +226,6 @@ public class RecruitingGUI extends JFrame {
         public void actionPerformed(ActionEvent e) {
         	
         	positionSelection = (String) positionBox.getSelectedItem();
-        	System.out.println(positionSelection);
 	
         }
     	});
@@ -232,7 +240,6 @@ public class RecruitingGUI extends JFrame {
         public void actionPerformed(ActionEvent e) {
         	
         	scholarshipSelection = (String) scholarshipBox.getSelectedItem();
-        	System.out.println(scholarshipSelection);
 	
         }
     	});
@@ -247,7 +254,6 @@ public class RecruitingGUI extends JFrame {
         public void actionPerformed(ActionEvent e) {
         	
         	stateSelection = (String) highschoolStateBox.getSelectedItem();
-        	System.out.println(stateSelection);
 	
         }
     	});
@@ -262,7 +268,6 @@ public class RecruitingGUI extends JFrame {
         public void actionPerformed(ActionEvent e) {
         	
         	classSelection = (String) highschoolClassBox.getSelectedItem();
-        	System.out.println(classSelection);
 	
         }
     	});
