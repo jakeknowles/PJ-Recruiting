@@ -164,8 +164,7 @@ public class RecruitingGUI extends JFrame {
         myPanel.add(myCentralPanel, BorderLayout.CENTER);
         myPanel.add(mySouthPanel, BorderLayout.SOUTH);
        
-        
-        
+
         Color myPurple = Color.decode("#CAC2FF"); // Light Purple
         myNorthPanel.setBackground(myPurple);
         myCentralPanel.setBackground(myPurple);
@@ -195,8 +194,8 @@ public class RecruitingGUI extends JFrame {
     
     /* Displays output to text area */
     private void displayOnJEditorPane() {
-        String output = ("You picked " + collegeSelection + ", " + positionSelection + ", " + scholarshipSelection + ", "
-            			+ stateSelection + ", " + classSelection);
+        String output = ("You picked: \n" + " - " + collegeSelection + "\n" +  " - " + positionSelection + "\n" + " - " + 
+    scholarshipSelection + "\n" + " - " + stateSelection + "\n" + " - " + classSelection);
         
         textView.setText(output);
         
