@@ -62,7 +62,16 @@ public class DBConnect {
 	    } catch (Exception e) {
 	        System.out.println(e);
 	    }
+	      //System.out.println(columnNames.toString());
+	    StringBuilder pls =null;
+	    for (int i = 0; i < 16; i ++) {
+	    	
+	    	//pls.append(data.elementAt(i).toString());
+	    }
 	    
+	
+	      
+	      
 	    ArrayList testing = new ArrayList();
 	    testing.add(columnNames);
 	    testing.add(data);
