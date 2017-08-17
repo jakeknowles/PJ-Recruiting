@@ -158,6 +158,8 @@ public class RecruitingGUI extends JFrame {
         textView.setBorder(textBorder);
         textView.setBackground(myGrey);
         textView.setEnabled(false); // Non-editable
+
+        
         mySouthPanel.add(textView);
         
         myPanel.add(myNorthPanel, BorderLayout.NORTH);
@@ -195,10 +197,8 @@ public class RecruitingGUI extends JFrame {
     /* Displays output to text area */
     private void displayOnJEditorPane() {
         String output = ("You picked: \n" + " - " + collegeSelection + "\n" +  " - " + positionSelection + "\n" + " - " + 
-    scholarshipSelection + "\n" + " - " + stateSelection + "\n" + " - " + classSelection);
-        
+        					scholarshipSelection + "\n" + " - " + stateSelection + "\n" + " - " + classSelection);
         textView.setText(output);
-        
         
     }
     
