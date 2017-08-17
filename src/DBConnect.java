@@ -62,7 +62,6 @@ public class DBConnect {
 	    } catch (Exception e) {
 	        System.out.println(e);
 	    }
-	    System.out.println(data + ", " + columnNames);
 	    
 	    ArrayList testing = new ArrayList();
 	    testing.add(columnNames);
