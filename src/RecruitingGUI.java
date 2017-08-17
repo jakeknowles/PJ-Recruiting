@@ -207,7 +207,7 @@ public class RecruitingGUI extends JFrame {
     private void displayOnJEditorPane(ArrayList data) {
     	
     	System.out.println(data.get(0).toString());
-    	//System.out.println(data.size());
+    	
     	
     	
     	StringBuilder output = new StringBuilder();
