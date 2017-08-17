@@ -114,6 +114,7 @@ public class RecruitingGUI extends JFrame {
     public RecruitingGUI() {
         super("PJ Recruiting");
         this.setResizable(false);
+        setDefaultLookAndFeelDecorated(true);
     }
 
     
